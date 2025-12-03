@@ -1,0 +1,41 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "customer@example.com",
+      "phone": "09171234567",
+      "name": "John Doe",
+      "servicem8_uuid": "a1b2c3d4-5678-90ab-cdef-1234567890ab"
+    },
+    {
+      "id": 2,
+      "email": "jane@example.com",
+      "phone": "09179876543",
+      "name": "Jane Smith",
+      "servicem8_uuid": "a1b2c3d4-5678-90ab-cdef-1234567890ac"
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "bookingId": "sample-booking-uuid-1",
+      "content": "Hello, I have a question about this booking.",
+      "sender": "Customer",
+      "timestamp": "2025-12-03T10:00:00Z"
+    },
+    {
+      "id": 2,
+      "bookingId": "sample-booking-uuid-2",
+      "content": "Please confirm the time for the job.",
+      "sender": "Customer",
+      "timestamp": "2025-12-03T11:30:00Z"
+    },
+    {
+      "id": 3,
+      "bookingId": "sample-booking-uuid-1",
+      "content": "Sure, your booking is confirmed for tomorrow.",
+      "sender": "Admin",
+      "timestamp": "2025-12-03T12:00:00Z"
+    }
+  ]
+}
