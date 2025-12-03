@@ -1,165 +1,101 @@
-🌟 [Project Title Here, e.g., Customer Portal POC]
+# 🌟 Simple POC
 
-[Company Name/Assessment Context] | Full-Stack Assessment
+A functional proof-of-concept (POC) demonstrating a minimal Customer Portal using **Next.js**, **Express.js**, and integration with a real **ServiceM8 API** endpoint. This project evaluates independent interpretation of requirements, reasonable assumptions, and delivering working functionality within a limited timeframe.
 
-[Brief, one-paragraph description of the project's purpose and key technologies used.]
+---
 
-🎯 Objective & Implemented Features
+## 🎯 Objective & Implemented Features
 
-This project was developed to demonstrate competence in architecture, integration, and modern web development practices.
+This project demonstrates competence in architecture, integration, and modern web development practices.
 
-Functional Requirements Met:
+**Functional Requirements Met:**
 
-✅ User Authentication: [Explain simple mock login logic.]
+- ✅ User Authentication  
+- ✅ Data Retrieval  
+- ✅ ServiceM8 API Endpoint Integration  
 
-✅ Data Retrieval: Successfully integrates with the [External API Name] to retrieve core data.
+---
 
-✅ [Feature 3 Name]: [Briefly describe how this feature works.]
+## 🛠️ Technical Stack
 
-✅ [Feature 4 Name]: [Briefly describe how this feature works.]
+**Frontend:**  
+- **Next.js (React)** – UI, routing, client-side data fetching, and optional server components.  
 
-🛠️ Technical Stack
+**Backend:**  
+- **Express.js** – API middleware (BFF), external API proxy, and secure data handling.  
 
-Area
+**Integration:**  
+- **ServiceM8 API**  
 
-Technology
+**Styling:**  
+- **Tailwind CSS** – Utility-first approach for responsive, fast development.  
 
-Role in Project
+**Persistence:**  
+- **Local JSON** – Simple storage for user messages and mock data.  
 
-Frontend
+---
 
-Next.js (React)
+## 🏗️ Project Structure & Architecture
 
-UI, Routing, Client-Side Data Fetching, Server Components (if used).
+The solution uses a **Backend for Frontend (BFF)** pattern with a **Controller-Service** architecture for separation of concerns.
 
-Backend
+client/ → Next.js application (UI & user interactions)
+server/ → Express.js API (secure proxy)
+├─ controllers/ → Handle HTTP request/response flow
+├─ services/ → Business logic (ServiceM8 integration, data handling)
+└─ routes/ → API endpoint definitions
 
-Express.js
+---
 
-API Middleware (BFF), External API proxy, Secure data handling.
+## 💡 Architectural Decisions & Trade-offs
 
-Integration
+1. Controller-Service Abstraction
 
-[External API Name]
+Decision: All business logic placed in server/services/servicem8.js, separate from controllers.
 
-Source of truth for [Core Data Type].
+Rationale: Keeps controller logic clean, makes business logic testable and reusable, and encapsulates external API and persistence complexities.
 
-Styling
+2. Data Persistence Method
 
-Tailwind CSS
+Decision: Single db.json file for local storage.
 
-Utility-first styling for responsiveness and quick development.
+Trade-off: Not production-ready. In a real app, a robust database (PostgreSQL, Firebase) would handle concurrent writes and relational data.
 
-Persistence
+3. Authentication Approach
 
-[Method, e.g., Local JSON/SQLite]
+Decision: Mock login system via server/routes/auth.js and server/middleware/auth.js.
 
-Simple, persistent storage for [Data saved, e.g., user messages].
+Rationale: Focuses on functional requirements (ServiceM8 integration & portal features) without time-consuming security setup. Token verification is mocked for route protection.
 
-🏗️ Project Structure & Architecture
+---
 
-The solution uses a Backend for Frontend (BFF) pattern with a clean Controller-Service architecture on the server side to maintain Separation of Concerns.
+## ⚙️ Setup & Installation
 
-Client (client/): Next.js application, responsible for rendering and user interaction.
+**Prerequisites:**  
+- Node.js v18+  
+- npm  
 
-Server (server/): Express.js API, serving as the secure proxy.
+**1. Configuration (Environment Variables):**  
+- Create `.env` files in both `client/` and `server/` directories.  
+- Ensure the client points to the running Express server, e.g., `http://localhost:5000/api`.  
 
-controllers/: Handles request/response flow (Express logic).
-
-services/: Contains all business logic (External API calls, local persistence, data transformation).
-
-routes/: Defines the API endpoints.
-
-⚙️ Setup and Installation
-
-Prerequisites
-
-Node.js (v18+) and npm/yarn.
-
-[Any specific required external accounts or credentials, e.g., API key].
-
-1. Configuration (Environment Variables)
-
-Create the necessary environment files in the respective directories:
-
-File
-
-Variable
-
-Purpose
-
-server/.env
-
-PORT
-
-Express API port (e.g., 5000).
-
-server/.env
-
-[EXTERNAL_API_USER]
-
-External API credential 1 (e.g., username).
-
-server/.env
-
-[EXTERNAL_API_PASS]
-
-External API credential 2 (e.g., password/key).
-
-client/.env.local
-
-NEXT_PUBLIC_API_URL
-
-Crucial: Must point to the running Express server (e.g., http://localhost:5000/api).
-
-2. Install Dependencies
-
-Server (Express.js):
-
+**2. Install Dependencies:**  
+```bash
+# Backend
 cd server
 npm install
 
-
-Client (Next.js):
-
+# Frontend
 cd client
 npm install
 
-
-3. Run the Applications
-
-Start the Backend (Express API):
-
+# Start Backend
 cd server
 npm run dev
-# Server runs on the port defined in .env
+# Server runs on http://localhost:5000
 
-
-Start the Frontend (Next.js):
-
+# Start Frontend
 cd client
 npm run dev
 # Client runs on http://localhost:3000
 
-
-💡 Architectural Decisions & Trade-offs
-
-This section is vital for showing professional judgment.
-
-1. Controller-Service Abstraction
-
-Decision: All business logic was placed in a dedicated Service layer, separating it from the HTTP management in the Controller layer.
-
-Rationale: Ensures that the core logic is highly testable and reusable. If the database or external API changes, only the Service layer needs modification, not the Controllers or Routes.
-
-2. Data Persistence Method
-
-Decision: [Explain why you chose JSON file/SQLite/In-memory array for POC data].
-
-Trade-off: This is not scalable for production. In a production environment, this would be replaced with [e.g., a managed cloud database like Firebase, or PostgreSQL].
-
-3. Authentication Approach
-
-Decision: Implemented a Mock Login system (authService.js).
-
-Rationale: Prioritizes functional requirements (ServiceM8 integration and core portal features) over complex, time-consuming security setup.
